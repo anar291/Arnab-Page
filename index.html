@@ -201,6 +201,23 @@
             .main-header .main-nav {
                 margin-top: 10px;
             }
+
+            .fade-in {
+  /* Start with the text invisible and slightly moved down */
+             opacity: 0;
+             transform: translateY(20px);
+  
+  /* Apply the animation */
+             animation: fadeIn 1.5s ease-out forwards;
+             }
+
+             @keyframes fadeIn {
+  /* End state: fully visible and at its original position */
+             to {
+             opacity: 1;
+             transform: translateY(0);
+            }
+          }
         }
     </style>
 </head>
@@ -221,7 +238,7 @@
 
     <section id="hero">
         <div class="container">
-            <h1>Hi, This side [Arnab Pandey]</h1>
+            <h1 class="fade-in">Hi, This side [Arnab Pandey]</h1>
             <p>A first-year Computer Science student passionate about technology.</p>
             <a href="https://github.com/anar291" target="_blank" class="cta-button">View My Work</a>
         </div>
