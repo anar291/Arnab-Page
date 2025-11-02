@@ -289,7 +289,7 @@ section {
     display: grid;
     /* This creates 1-3 columns depending on screen size */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 0.3rem;
     margin-top: 2rem;
     text-align: left; /* Aligns text inside the card to the left */
 }
