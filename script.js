@@ -1,86 +1,133 @@
 // Wait for the DOM to be fully loaded before running scripts
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === 1. SMOOTH SCROLLING for Nav Links ===
-    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+    // --- 1. Theme Toggle ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body; // We define 'body' here once
+    const themeIcon = themeToggleBtn.querySelector('i');
     
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Prevent the default jump
-            e.preventDefault();
-            
-            // Get the target element's ID from the href
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Get header height to offset the scroll
-                const headerOffset = document.querySelector('.main-header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20; // 20px extra padding
-                
-                // Scroll smoothly to the target
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeIcon.classList.remove('bi-moon-fill');
+        themeIcon.classList.add('bi-sun-fill');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Save the user's preference
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.remove('bi-moon-fill');
+            themeIcon.classList.add('bi-sun-fill');
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.remove('bi-sun-fill');
+            themeIcon.classList.add('bi-moon-fill');
+        }
     });
 
-    // === 2. FADE-IN ON SCROLL Animation ===
+
+    // --- 2. Fade-in on Scroll Animation ---
     
-    // Select all elements to fade in
-    const fadeElements = document.querySelectorAll('.hidden-fade');
-    
-    const observerOptions = {
-        root: null, // observes intersections relative to the viewport
-        threshold: 0.1 // triggers when 10% of the element is visible
-    };
-    
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Select all elements with the .hidden-fade class
+    const hiddenElements = document.querySelectorAll('.hidden-fade');
+
+    // Set up the Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            // If the element is on screen
             if (entry.isIntersecting) {
-                // If element is visible, add the 'show-fade' class
-                entry.target.classList.add('show-fade');
-                // Stop observing this element to save resources
+                // Add the 'show' class to make it visible
+                entry.target.classList.add('show');
+                // We can unobserve it so it only animates once
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-    
-    // Observe each fade-in element
-    fadeElements.forEach(el => observer.observe(el));
-
-
-    // === 3. DARK MODE TOGGLE ===
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement; // The <html> tag
-    const icon = themeToggle.querySelector('i');
-
-    // Function to set the theme
-    function setTheme(theme) {
-        htmlElement.setAttribute('data-theme', theme);
-        if (theme === 'dark') {
-            icon.classList.remove('bi-moon-fill');
-            icon.classList.add('bi-brightness-high-fill'); // Sun icon
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.classList.remove('bi-brightness-high-fill');
-            icon.classList.add('bi-moon-fill'); // Moon icon
-            localStorage.setItem('theme', 'light');
-        }
-    }
-
-    // Check for saved theme in localStorage on page load
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    setTheme(currentTheme);
-
-    // Add click event listener to the toggle button
-    themeToggle.addEventListener('click', () => {
-        // Get the current theme
-        const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
     });
 
-});
+    // Tell the observer to watch each .hidden-fade element
+    hiddenElements.forEach(el => observer.observe(el));
+
+
+    // --- 3. Active Nav Link on Scroll ---
+    const sections = document.querySelectorAll('section[id]');
+    // Select only the links that scroll to a section
+    const scrollSpyLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+
+    function updateActiveNavLink() {
+        let currentSectionId = '';
+        
+        // Find which section is currently in view
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // 81px offset for the fixed header + 1px border
+            if (window.scrollY >= sectionTop - 81) { 
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        // Add 'active' class to the matching nav link and remove it from others
+        scrollSpyLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Run the function on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    // Run it once on load
+    updateActiveNavLink();
+
+
+    // --- 4. Mobile Menu Toggle ---
+    const menuToggleBtn = document.getElementById('mobile-menu-toggle');
+    const mobileMenuIcon = menuToggleBtn.querySelector('i');
+    const mainNav = document.querySelector('.main-nav');
+    // We can re-use the 'body' variable from Section 1
+
+    menuToggleBtn.addEventListener('click', () => {
+        // Toggle the 'is-open' class on the nav menu
+        mainNav.classList.toggle('is-open');
+
+        // Toggle the icon between 'bi-list' (hamburger) and 'bi-x' (close)
+        if (mainNav.classList.contains('is-open')) {
+            mobileMenuIcon.classList.remove('bi-list');
+            mobileMenuIcon.classList.add('bi-x');
+            menuToggleBtn.setAttribute('aria-expanded', 'true');
+            
+            // Prevent the page from scrolling when the menu is open
+            body.style.overflow = 'hidden'; 
+        } else {
+            mobileMenuIcon.classList.remove('bi-x');
+            mobileMenuIcon.classList.add('bi-list');
+            menuToggleBtn.setAttribute('aria-expanded', 'false');
+            
+            // Allow the page to scroll again
+            body.style.overflow = '';
+        }
+    });
+
+    // --- 5. Close Mobile Menu on Link Click ---
+    // This is a nice touch for a good user experience!
+    // We select ALL links in the nav for this
+    const allNavLinks = document.querySelectorAll('.main-nav a'); 
+    
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Check if the mobile menu is open
+            if (mainNav.classList.contains('is-open')) {
+                // Programmatically 'click' the toggle button to close it
+                // This is great because it also resets the icon and overflow!
+                menuToggleBtn.click();
+            }
+        });
+    });
+
+}); // <-- This is the one and only closing bracket for DOMContentLoaded
