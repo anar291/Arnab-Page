@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnab Pandey - Portfolio</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <link rel="stylesheet" href="index.css">
@@ -12,186 +16,159 @@
 <body>
 
     <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo">Arnab Pandey</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#projects">Projects</a><li>
-                    <li>
-                        <button id="theme-toggle" class="theme-toggle">
-                            <i class="bi bi-moon-fill"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div class="container">
+        <a href="#hero" class="logo">Arnab Pandey</a>
+        
+        <nav class="main-nav">
+            <ul id="main-nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-fill"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
     </header>
 
-    <section id="hero">
-        <div class="container">
-            <h1 class="fade-in">Hi, This side [Arnab Pandey]</h1>
-            <p>A first-year Computer Science student passionate about technology.</p>
-            <a href="https://github.com/anar291" target="_blank" class="cta-button">View My Work</a>
-        </div>
-    </section>
-
-    <section id="about" class="hidden-fade">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>
-                Hello, This side Arnab Pandey, I am a B-Tech CS-(Ai/Ml) graduate from Medhavi Skills University where i have developed a profound interest in transforming complex problems into elegant, automation , with a deep proficiency in Python. I am now seeking to leverage my project-based experience to the real world.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills" class="hidden-fade">
-        <div class="container">
-            <h2>My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML5</div>
-                <div class="skill-item">CSS3</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Dart-Flutter</div>
-                <div class="skill-item">Bootstrap</div>
-                <div class="skill-item">Tailwind Css</div>
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1 class="fade-in">Hi, This side [Arnab Pandey]</h1>
+                <p class="fade-in" style="animation-delay: 200ms;">A first-year Computer Science student passionate about technology.</p>
+                <a href="https://github.com/anar291" target="_blank" class="cta-button fade-in" style="animation-delay: 400ms;">View My Work</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="hidden-fade">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>Melodic-Cafe</h3>
-                    <p>Melodic-Cafe is a custom-built music web application that serves as a special, personal audio archive. It's designed from the ground up to host and stream a growing collection of melodies sung by my sweet one, creating a unique and personal music library to listen to her voice anytime.</p>
-                    <div class="project-skills">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://melodic.lovestoblog.com/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                        <a href="https://github.com/anar291/Melodic-Cafe.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                    </div>
+        <section id="about" class="hidden-fade">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>
+                    Hello, This side Arnab Pandey, I am a B-Tech CS-(Ai/Ml) graduate from Medhavi Skills University where i have developed a profound interest in transforming complex problems into elegant, automation , with a deep proficiency in Python. I am now seeking to leverage my project-based experience to the real world.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="hidden-fade">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">HTML5</div>
+                    <div class="skill-item">CSS3</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">Dart-Flutter</div>
+                    <div class="skill-item">Bootstrap</div>
+                    <div class="skill-item">Tailwind Css</div>
                 </div>
             </div>
-        </div>
-    </section>  
+        </section>
+
+        <section id="projects" class="hidden-fade">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <h3>Melodic-Cafe</h3>
+                        <p>A custom-built music web application... a unique and personal music library to listen to her voice anytime.</p>
+                        <div class="project-skills">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://melodic.lovestoblog.com/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="https://github.com/anar291/Melodic-Cafe.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Dating Site</h3>
+                        <p>A beautifully designed dating website concept... prioritizing a clean aesthetic and responsive design.</p>
+                        <div class="project-skills">
+                            <span>Dart</span>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://dating.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="https://github.com/anar291/Dating-Site.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Genz-Clock</h3>
+                        <p>A digital clock with a vibe. This project is a simple, aesthetic time-keeper built for the modern web.</p>
+                        <div class="project-skills">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://genzclock.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="https://github.com/anar291/Genz-Clock.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>To-DO List</h3>
+                        <p>A simple yet powerful to-do list website... All items are saved in the browser, making it a reliable tool.</p>
+                        <div class="project-skills">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://todos.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="https://github.com/anar291/random-shit.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Calculator</h3>
+                        <p>A clean, functional desktop calculator built with Python and the Tkinter GUI library.</p>
+                        <div class="project-skills">
+                            <span>Python</span>
+                            <span>Tkinter</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/anar291/Arnab-learning.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+
+                </div> </div>
+        </section>  
+    </main>
     
-    <section id="projects" class="hidden-fade">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>Dating Site</h3>
-                    <p>A beautifully designed dating website concept focused on creating a welcoming and easy-to-navigate space for users to connect. I designed and built the complete user interface, prioritizing a clean aesthetic and responsive design that works seamlessly across all devices, from mobile phones to desktops.</p>
-                    <div class="project-skills">
-                        <span>Html5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://dating.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                        <a href="https://github.com/anar291/Dating-Site.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="projects" class="hidden-fade">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>Genz-Clock</h3>
-                    <p>A digital clock with a vibe. This project is a simple, aesthetic time-keeper built for the modern web. It's fully responsive and created using vanilla HTML, CSS, and JavaScript.<p>
-                    <div class="project-skills">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://genzclock.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                        <a href="https://github.com/anar291/Genz-Clock.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="hidden-fade">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>To-DO List</h3>
-                    <p>A simple yet powerful to-do list website designed to help users stay organized and boost their productivity. This app features a clean, intuitive interface for quickly adding and managing daily tasks. All items are saved in the browser, making it a reliable tool for day-to-day planning.<p>
-                    <div class="project-skills">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://todos.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                        <a href="https://github.com/anar291/random-shit.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="hidden-fade">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>Calculator</h3>
-                    <p>A clean, functional desktop calculator built with Python and the Tkinter GUI library. This application performs all standard arithmetic operations, focusing on a simple, event-driven design and a responsive user interface.</p>
-                    <div class="project-skills">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/anar291/Arnab-learning.git" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                        <a href="https://github.com/anar291/Arnab-learning.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer id="contact" class="main-footer hidden-fade">
         <div class="container">
             <h2>Get In Touch</h2>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/arnab-pandey-60a085370/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/arnab-pandey-60a085370/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <i class="bi bi-linkedin"></i>
                 </a>
-                <a href="https://github.com/anar291" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/anar291" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="bi bi-github"></i>
                 </a>
-                <a href="mailto:warmitul48@gmail.com" target="_blank" rel="noopener noreferrer">
+                <a href="mailto:warmitul48@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
                     <i class="bi bi-envelope-fill"></i>
                 </a>
-                <a href="tel:+918601526076" target="_blank" rel="noopener noreferrer">
+                <a href="tel:+918601526076" target="_blank" rel="noopener noreferrer" aria-label="Telephone">
                     <i class="bi bi-telephone-fill"></i>
                 </a>
             </div>
+            <p class="footer-credit">© 2025 Arnab Pandey. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
