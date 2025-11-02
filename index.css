@@ -1,353 +1,425 @@
-/* A nice, clean font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-/* --- Global Styles & Variables --- */
+/* --- 1. Root Variables and Base Styles --- */
 
 :root {
-    --primary-color: #007bff;
-    --light-gray: #f4f4f4;
-    --dark-gray: #333;
-    --background-color: #ffffff;
-    --text-color: #333;
-    --card-bg: #ffffff;
-    --shadow-color: rgba(0,0,0,0.1);
+  /* This is where we define our colors. 
+     The JS will just toggle a class on the <body> 
+     which will swap these variable values. */
+  
+  /* Light Mode */
+  --bg-color: #f4f7f9;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --border-color: #e3e3e3;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-speed: 0.3s ease;
 }
 
-/* === NEW: Dark Mode Variables === */
-:root[data-theme="dark"] {
-    --primary-color: #007bff; 
-    --light-gray: #1e1e1e;
-    --dark-gray: #f4f4f4;
-    --background-color: #121212;
-    --text-color: #f4f4f4;
-    --card-bg: #1e1e1e;
-    --shadow-color: rgba(0,0,0,0.4);
+body.dark-mode {
+  /* Dark Mode */
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg: #1e1e1e;
+  --header-bg: rgba(20, 20, 20, 0.8);
+  --primary-color: #009fff;
+  --primary-hover: #007fcc;
+  --secondary-color: #a0a0a0;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* This makes the #hash-link scrolling smooth */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for the fixed header */
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-h1, h2 {
-    font-weight: 600;
-    margin-bottom: 1rem;
+h1, h2, h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+p {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--primary-hover);
 }
 
 section {
-    padding: 4rem 0;
+  padding: 2rem 0;
 }
 
-/* --- Header / Navbar --- */
+/* --- 2. Header and Navigation --- */
+
 .main-header {
-    background: var(--background-color);
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0;
+  
+  /* This is the "glassmorphism" effect */
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
 }
 
 .main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.main-header .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.logo:hover {
+  color: var(--text-color);
 }
 
 .main-nav ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-}
-
-.main-nav ul li {
-    margin-left: 20px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 1.5rem;
 }
 
 .main-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
+  font-weight: 600;
+  color: var(--text-color);
+  position: relative;
+  padding: 0.5rem 0;
 }
 
-.main-nav a:hover {
-    color: var(--primary-color);
+/* Active nav link highlight */
+.main-nav a.active {
+  color: var(--primary-color);
 }
 
-/* === NEW: Theme Toggle Button Style === */
 .theme-toggle {
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: 20px;
-    padding: 5px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--transition-speed), transform 0.2s ease;
 }
 .theme-toggle:hover {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+/* --- New styles for the mobile menu --- */
+/* This was added in the previous step */
+.mobile-menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 2rem; /* Nice and big for tapping */
+  cursor: pointer;
+  
+  /* Make sure it's on top of other header content */
+  z-index: 1050; 
+  transition: color var(--transition-speed);
+}
+
+.mobile-menu-toggle:hover {
     color: var(--primary-color);
 }
 
 
-/* --- Hero Section --- */
+/* --- 3. Hero Section --- */
+
 #hero {
-    padding-top: 12rem; /* Give space for the fixed header */
-    text-align: center;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* Add a subtle background gradient */
+  background: radial-gradient(circle, var(--bg-color) 0%, var(--card-bg) 100%);
 }
 
 #hero h1 {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 
 #hero p {
-    font-size: 1.2rem;
-    color: #666;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .cta-button {
-    display: inline-block;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 12px 25px;
-    margin-top: 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
-
 .cta-button:hover {
-    background: #0056b3;
+  background-color: var(--primary-hover);
+  color: #fff;
+  transform: translateY(-3px);
 }
 
-/* --- About, Skills, Projects Sections --- */
-#about, #skills, #projects, #contact {
-    text-align: center;
-}
+/* --- 4. Skills Section --- */
 
-#about {
-    background: var(--light-gray);
-    transition: background-color 0.3s ease;
-}
-
-#about p {
-    max-width: 700px;
-    margin: auto;
-}
-
-#skills .skills-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-
-@keyframes pulse-glow {
-    0% {
-        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 16px rgba(59, 130, 246, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-    }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
 }
 
 .skill-item {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 4px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    font-weight: 500;
-    color: #333; /* Explicitly set text color for skill item */
-    animation: pulse-glow 2.5s infinite ease-in-out;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px var(--shadow-color);
 }
 
-#projects {
-    background: var(--light-gray);
-    transition: background-color 0.3s ease;
-}
+/* --- 5. Projects Section --- */
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-    text-align: left;
+  display: grid;
+  /* This CSS Grid magic makes it responsive */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .project-card {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensures border-radius crops children */
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--shadow-color);
 }
 
+/* We separate the content from the card itself for better padding */
 .project-card h3 {
-    color: var(--primary-color);
+  padding: 1.5rem 1.5rem 0 1.5rem;
 }
-
-/* --- Footer --- */
-.main-footer {
-    background: #333;  /* Your original black color */
-    color: #fff;       /* White text */
-    text-align: center;
-    padding: 2rem 0;
-    /* We don't need the transition anymore since it doesn't change */
-}
-
-.main-footer h2 {
-    color: #fff;       /* White text */
-}
-
-.main-footer .social-links a {
-    color: #fff;       /* White text */
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-/* === NEW: Fade-in on Scroll Classes === */
-.hidden-fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.show-fade {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* --- Media Query --- */
-@media(max-width: 768px) {
-    #hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .main-header .container {
-        flex-direction: column;
-    }
-    
-    .main-header .main-nav {
-        margin-top: 10px;
-    }
-}
-
-/* === FIXED: Moved this out of the media query === */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* === ADD ALL THESE NEW STYLES === */
-#projects {
-    background: var(--light-gray);
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-.projects-grid {
-    display: grid;
-    /* This creates 1-3 columns depending on screen size */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 0.3rem;
-    margin-top: 2rem;
-    text-align: left; /* Aligns text inside the card to the left */
-}
-
-.project-card {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
 .project-card p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    flex-grow: 1; /* This makes the description fill the space */
+  padding: 0 1.5rem;
+  flex-grow: 1; /* This makes all cards the same height */
 }
 
 .project-skills {
-    margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
-
 .project-skills span {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 15px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
 }
 
-.project-links a {
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-right: 15px;
-    font-size: 0.9rem;
+.project-links {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-color);
+  display: flex;
+  gap: 1.5rem;
+}
+.project-link {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-link i {
+  font-size: 0.9rem;
 }
 
-.project-links a:hover {
-    text-decoration: underline;
+/* --- 6. Footer / Contact --- */
+
+.main-footer {
+  text-align: center;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
 }
 
-.project-links i {
-    margin-left: 4px;
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
-/* === END OF NEW STYLES === */
+.social-links a {
+  font-size: 1.8rem;
+  transition: transform 0.2s ease;
+}
+.social-links a:hover {
+  transform: scale(1.1) translateY(-3px);
+}
+
+.footer-credit {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
 
 
-/* --- Footer --- */
-/* ... (your footer styles are fine) ... */
+/* --- 7. Animations --- */
+
+/* Hero text fade-in on load */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scroll-in-from-bottom animation */
+.hidden-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 8. Responsive (Mobile) --- */
+/* This is the new block you provided */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+  
+  /* --- Mobile Nav Styles --- */
+  
+  .main-header .container {
+      /* Re-align header to have logo on left, button on right */
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .main-nav {
+      /* This turns the nav into a full-screen overlay */
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh; /* 100% of the viewport height */
+      
+      /* Use the same glassmorphism effect */
+      background-color: var(--header-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      
+      /* Hide it off-screen to the right by default */
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      
+      /* Make sure it's on top of the page, but below the toggle button */
+      z-index: 1010;
+  }
+  
+  /* This 'is-open' class will be added by JavaScript */
+  .main-nav.is-open {
+      /* This slides the menu into view */
+      transform: translateX(0);
+  }
+
+  .main-nav ul {
+      /* Stack the links vertically... */
+      flex-direction: column;
+      /* ...and center them in the middle of the screen */
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      gap: 2rem;
+  }
+  
+  .main-nav a {
+      font-size: 1.5rem; /* Make links bigger and easier to tap */
+  }
+  
+  .theme-toggle {
+      font-size: 1.5rem; /* Make theme toggle bigger too */
+  }
+
+  .mobile-menu-toggle {
+      display: block; /* Show the hamburger button on mobile */
+  }
+  
+  /* Readjust scroll padding for the sticky header */
+  html {
+    scroll-padding-top: 80px; 
+  }
+}
