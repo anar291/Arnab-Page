@@ -1,0 +1,353 @@
+/* A nice, clean font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Global Styles & Variables --- */
+
+:root {
+    --primary-color: #007bff;
+    --light-gray: #f4f4f4;
+    --dark-gray: #333;
+    --background-color: #ffffff;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0,0,0,0.1);
+}
+
+/* === NEW: Dark Mode Variables === */
+:root[data-theme="dark"] {
+    --primary-color: #007bff; 
+    --light-gray: #1e1e1e;
+    --dark-gray: #f4f4f4;
+    --background-color: #121212;
+    --text-color: #f4f4f4;
+    --card-bg: #1e1e1e;
+    --shadow-color: rgba(0,0,0,0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+h1, h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+/* --- Header / Navbar --- */
+.main-header {
+    background: var(--background-color);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* === NEW: Theme Toggle Button Style === */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 5px;
+}
+.theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Hero Section --- */
+#hero {
+    padding-top: 12rem; /* Give space for the fixed header */
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    margin-top: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #0056b3;
+}
+
+/* --- About, Skills, Projects Sections --- */
+#about, #skills, #projects, #contact {
+    text-align: center;
+}
+
+#about {
+    background: var(--light-gray);
+    transition: background-color 0.3s ease;
+}
+
+#about p {
+    max-width: 700px;
+    margin: auto;
+}
+
+#skills .skills-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(59, 130, 246, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
+}
+
+.skill-item {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-weight: 500;
+    color: #333; /* Explicitly set text color for skill item */
+    animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+#projects {
+    background: var(--light-gray);
+    transition: background-color 0.3s ease;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.main-footer {
+    background: #333;  /* Your original black color */
+    color: #fff;       /* White text */
+    text-align: center;
+    padding: 2rem 0;
+    /* We don't need the transition anymore since it doesn't change */
+}
+
+.main-footer h2 {
+    color: #fff;       /* White text */
+}
+
+.main-footer .social-links a {
+    color: #fff;       /* White text */
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+/* === NEW: Fade-in on Scroll Classes === */
+.hidden-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show-fade {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Media Query --- */
+@media(max-width: 768px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-header .container {
+        flex-direction: column;
+    }
+    
+    .main-header .main-nav {
+        margin-top: 10px;
+    }
+}
+
+/* === FIXED: Moved this out of the media query === */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ADD ALL THESE NEW STYLES === */
+#projects {
+    background: var(--light-gray);
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    /* This creates 1-3 columns depending on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    text-align: left; /* Aligns text inside the card to the left */
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* This makes the description fill the space */
+}
+
+.project-skills {
+    margin-bottom: 1rem;
+}
+
+.project-skills span {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.project-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+.project-links i {
+    margin-left: 4px;
+}
+/* === END OF NEW STYLES === */
+
+
+/* --- Footer --- */
+/* ... (your footer styles are fine) ... */
