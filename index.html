@@ -3,241 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">">
-    <style>
-        /* A nice, clean font from Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        /* --- Global Styles & Variables --- */
-        
-        :root {
-            --primary-color: #007bff; /* A nice, professional blue */
-            --light-gray: #f4f4f4;
-            --dark-gray: #333;
-            --background-color: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            background-color: var(--background-color);
-            color: var(--dark-gray);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 2rem;
-        }
-
-        h1, h2 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        section {
-            padding: 4rem 0;
-        }
-
-        /* --- Header / Navbar --- */
-        .main-header {
-            background: var(--background-color);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .main-header .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .main-nav ul li {
-            margin-left: 20px;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 600;
-        }
-        
-        .main-nav a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- Hero Section --- */
-        #hero {
-            padding-top: 12rem; /* Give space for the fixed header */
-            text-align: center;
-        }
-        
-        #hero h1 {
-            font-size: 3.5rem;
-        }
-        
-        #hero p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 12px 25px;
-            margin-top: 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            background: #0056b3;
-        }
-        
-        /* --- About, Skills, Projects Sections --- */
-        #about, #skills, #projects, #contact {
-            text-align: center;
-        }
-
-        #about {
-            background: var(--light-gray);
-        }
-
-        #about p {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        #skills .skills-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-
-        @keyframes pulse-glow {
-  0% {
+    <title>Arnab Pandey - Portfolio</title>
     
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-  }
-  50% {
-
-    box-shadow: 0 0 16px rgba(59, 130, 246, 0.6);
-  }
-  100% {
-
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-  }
-}
-
-/* 2. Apply the animation to your skill item */
-.skill-item {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 4px;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  font-weight: 500;
-  
-  /* Apply the animation here */
-  /* It will run the 'pulse-glow' animation over 2.5 seconds,
-     run infinitely, and use an 'ease-in-out' timing */
-  animation: pulse-glow 2.5s infinite ease-in-out;
-}
-
-        #projects {
-             background: var(--light-gray);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-
-        .project-card {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .project-card h3 {
-             color: var(--primary-color);
-        }
-
-        /* --- Footer --- */
-        .main-footer {
-            background: var(--dark-gray);
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        .main-footer .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-        @media(max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .main-header .container {
-                flex-direction: column;
-            }
-            
-            .main-header .main-nav {
-                margin-top: 10px;
-            }
-
-            .fade-in {
-             opacity: 0;
-             transform: translateY(20px);
-             animation: fadeIn 1.5s ease-out forwards;
-             }
-
-             @keyframes fadeIn {
-             to {
-             opacity: 1;
-             transform: translateY(0);
-            }
-          }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -249,6 +19,12 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -256,22 +32,22 @@
 
     <section id="hero">
         <div class="container">
-            <h1 class="fade-in"> Hi, This side [Arnab Pandey] </h1>
+            <h1 class="fade-in">Hi, This side [Arnab Pandey]</h1>
             <p>A first-year Computer Science student passionate about technology.</p>
             <a href="https://github.com/anar291" target="_blank" class="cta-button">View My Work</a>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="hidden-fade">
         <div class="container">
             <h2>About Me</h2>
             <p>
-               Hello, This side  Arnab Pandey, I am a B-Tech CS-(Ai/Ml) graduate from Medhavi Skills University where i have developed a profound interest in transforming complex problems into elegant, automation , with a deep proficiency in Python. I am now seeking to leverage my project-based experience to the real world.
+                Hello, This side Arnab Pandey, I am a B-Tech CS-(Ai/Ml) graduate from Medhavi Skills University where i have developed a profound interest in transforming complex problems into elegant, automation , with a deep proficiency in Python. I am now seeking to leverage my project-based experience to the real world.
             </p>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="hidden-fade">
         <div class="container">
             <h2>My Skills</h2>
             <div class="skills-grid">
@@ -285,39 +61,49 @@
         </div>
     </section>
 
-    <footer id="contact" class="main-footer">
+    <section id="projects" class="hidden-fade">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3>Melodic-Cafe</h3>
+                    <p>Melodic-Cafe is a custom-built music web application that serves as a special, personal audio archive. It's designed from the ground up to host and stream a growing collection of melodies sung by my sweet one, creating a unique and personal music library to listen to her voice anytime.</p>
+                    <div class="project-skills">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://melodic.lovestoblog.com/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                        <a href="https://github.com/anar291/Melodic-Cafe.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+
+    <footer id="contact" class="main-footer hidden-fade">
         <div class="container">
             <h2>Get In Touch</h2>
             <div class="social-links">
-                <a 
-                 href="https://www.linkedin.com/in/arnab-pandey-60a085370/"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="bi bi-linkedin"></i>
+                <a href="https://www.linkedin.com/in/arnab-pandey-60a085370/" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-linkedin"></i>
                 </a>
-                <a
-                 href="https://github.com/anar291"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                <i class="bi bi-github"></i>
+                <a href="https://github.com/anar291" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-github"></i>
                 </a>
-                 <a 
-                 href="mailto: warmitul48@gmail.com":
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="bi bi-envelope-fill"></i>
+                <a href="mailto:warmitul48@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-envelope-fill"></i>
                 </a>
-                <a
-                href="tel: +918601526076":
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bi bi-telephone-fill"><i>
+                <a href="tel:+918601526076" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-telephone-fill"></i>
                 </a>
             </div>
         </div>
-
-        </div>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
