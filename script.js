@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             mobileMenuIcon.classList.remove('bi-x');
             mobileMenuIcon.classList.add('bi-list');
-            menuToggleBtn.setAttribute('aria-expanded', 'false');
+            menuToggleBtn.setAttribute('a_ria-expanded', 'false');
             
             // Allow the page to scroll again
             body.style.overflow = '';
@@ -130,4 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-}); // <-- This is the one and only closing bracket for DOMContentLoaded
+}); 
