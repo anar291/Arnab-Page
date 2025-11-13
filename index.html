@@ -11,6 +11,8 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -24,6 +26,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
@@ -42,7 +45,7 @@
     <main>
         <section id="hero">
             <div class="container">
-                <h1 class="fade-in">Hi, This side [Arnab Pandey]</h1>
+                <h1 class="fade-in">Hi, This side [<span style="color:cornflowerblue;">Arnab Pandey</span>]</h1>
                 <p class="fade-in" style="animation-delay: 200ms;">A first-year Computer Science student passionate about technology.</p>
                 <a href="https://github.com/anar291" target="_blank" class="cta-button fade-in" style="animation-delay: 400ms;">View My Work</a>
             </div>
@@ -61,18 +64,91 @@
             <div class="container">
                 <h2>My Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-item">HTML5</div>
-                    <div class="skill-item">CSS3</div>
-                    <div class="skill-item">Python</div>
-                    <div class="skill-item">Dart-Flutter</div>
-                    <div class="skill-item">Bootstrap</div>
-                    <div class="skill-item">Tailwind Css</div>
-                    <div class="skill-item">Git</div>
-                    <div class="skill-item">Github</div>
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">Web-Dev</div>
-                    <div class="skill-item">Mobile App Dev</div>
-                    <div class="skill-item">Game Dev</div>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-filetype-html"></i></div>
+                            <div class="flip-card-back"><h3>HTML5</h3></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-filetype-css"></i></div>
+                            <div class="flip-card-back"><h3>CSS3</h3></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-filetype-py"></i></div>
+                            <div class="flip-card-back"><h3>Python</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-phone"></i></div>
+                            <div class="flip-card-back"><h3>Dart-Flutter</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-bootstrap"></i></div>
+                            <div class="flip-card-back"><h3>Bootstrap</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-wind"></i></div>
+                            <div class="flip-card-back"><h3>Tailwind CSS</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-git"></i></div>
+                            <div class="flip-card-back"><h3>Git</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-github"></i></div>
+                            <div class="flip-card-back"><h3>Github</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-filetype-js"></i></div>
+                            <div class="flip-card-back"><h3>JavaScript</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-display"></i></div>
+                            <div class="flip-card-back"><h3>Web-Dev</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-phone-fill"></i></div>
+                            <div class="flip-card-back"><h3>Mobile App Dev</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-controller"></i></div>
+                            <div class="flip-card-back"><h3>Game Dev</h3></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -82,76 +158,162 @@
                 <h2>My Projects</h2>
                 <div class="projects-grid">
                     
-                    <div class="project-card">
-                        <h3>Melodic-Cafe</h3>
-                        <p>A custom-built music web application... a unique and personal music library to listen to her voice anytime.</p>
-                        <div class="project-skills">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://melodic.lovestoblog.com/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                            <a href="https://github.com/anar291/Melodic-Cafe.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Dating Site</h3>
-                        <p>A beautifully designed dating website concept... prioritizing a clean aesthetic and responsive design.</p>
-                        <div class="project-skills">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://dating.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                            <a href="https://github.com/anar291/Dating-Site.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                    <div class="flip-card project-card-flip">
+                        <div class="flip-card-inner">
+                            
+                            <div class="flip-card-front project-front-face">
+                                <h3>Melodic-Cafe</h3>
+                            </div>
+                            
+                            <div class="flip-card-back project-card">
+                                <h3>Melodic-Cafe</h3>
+                                <p>A custom-built music web application... a unique and personal music library to listen to her voice anytime.</p>
+                                <div class="project-skills">
+                                    <i class="devicon-html5-plain" title="HTML5">HTML5</i>
+                                    <i class="devicon-css3-plain" title="CSS3">CSS3</i>
+                                    <i class="devicon-javascript-plain" title="JavaScript">Javascript</i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://melodic.lovestoblog.com/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                                    <a href="https://github.com/anar291/Melodic-Cafe.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <h3>Genz-Clock</h3>
-                        <p>A digital clock with a vibe. This project is a simple, aesthetic time-keeper built for the modern web.</p>
-                        <div class="project-skills">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://genzclock.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                            <a href="https://github.com/anar291/Genz-Clock.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>To-DO List</h3>
-                        <p>A simple yet powerful to-do list website... All items are saved in the browser, making it a reliable tool.</p>
-                        <div class="project-skills">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://todos.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
-                            <a href="https://github.com/anar291/random-shit.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                    <div class="flip-card project-card-flip">
+                        <div class="flip-card-inner">
+                            
+                            <div class="flip-card-front project-front-face">
+                                <h3>Dating Site</h3>
+                            </div>
+                            
+                            <div class="flip-card-back project-card">
+                                <h3>Dating Site</h3>
+                                <p>A beautifully designed dating website concept... prioritizing a clean aesthetic and responsive design.</p>
+                                <div class="project-skills">
+                                    <i class="devicon-html5-plain" title="HTML5">HTML5</i>
+                                    <i class="devicon-css3-plain" title="CSS3">CSS3</i>
+                                    <i class="devicon-javascript-plain" title="JavaScript">Javascript</i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://dating.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                                    <a href="https://github.com/anar291/Dating-Site.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <h3>Calculator</h3>
-                        <p>A clean, functional desktop calculator built with Python and the Tkinter GUI library.</p>
-                        <div class="project-skills">
-                            <span>Python</span>
-                            <span>Tkinter</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/anar291/Arnab-learning.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                    <div class="flip-card project-card-flip">
+                        <div class="flip-card-inner">
+
+                            <div class="flip-card-front project-front-face">
+                                <h3>Genz-Clock</h3>
+                            </div>
+                            
+                            <div class="flip-card-back project-card">
+                                <h3>Genz-Clock</h3>
+                                <p>A digital clock with a vibe. This project is a simple, aesthetic time-keeper built for the modern web.</p>
+                                <div class="project-skills">
+                                    <i class="devicon-html5-plain" title="HTML5"></i>
+                                    <i class="devicon-css3-plain" title="CSS3"></i>
+                                    <i class="devicon-javascript-plain" title="JavaScript"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://genzclock.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                                    <a href="https://github.com/anar291/Genz-Clock.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                </div> </div>
-        </section>  
+                    <div class="flip-card project-card-flip">
+                        <div class="flip-card-inner">
+                            
+                            <div class="flip-card-front project-front-face">
+                                <h3>To-DO List</h3>
+                            </div>
+                            
+                            <div class="flip-card-back project-card">
+                                <h3>To-DO List</h3>
+                                <p>A simple yet powerful to-do list website... All items are saved in the browser, making it a reliable tool.</p>
+                                <div class="project-skills">
+                                    <i class="devicon-html5-plain" title="HTML5"></i>
+                                    <i class="devicon-css3-plain" title="CSS3"></i>
+                                    <i class="devicon-javascript-plain" title="JavaScript"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://todos.nichesite.org/" class="project-link" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right"></i></a>
+                                    <a href="https://github.com/anar291/random-shit.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card project-card-flip">
+                        <div class="flip-card-inner">
+                            
+                            <div class="flip-card-front project-front-face">
+                                <h3>Calculator</h3>
+                            </div>
+                            
+                            <div class="flip-card-back project-card">
+                                <h3>Calculator</h3>
+                                <p>A clean, functional desktop calculator built with Python and the Tkinter GUI library.</p>
+                                <div class="project-skills">
+                                    <i class="devicon-python-plain" title="Python"></i>
+                                    <i class="bi bi-window-desktop" title="Tkinter"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/anar291/Arnab-learning.git" class="project-link" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+        </section>
+
+        <section id="achievements" class="hidden-fade">
+            <div class="container">
+                <h2>Achievements</h2>
+                <div class="skills-grid"> 
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-trophy"></i></div>
+                            <div class="flip-card-back">
+                                <h3>Hackathon Participant</h3>
+                                <p style="color: #eee; font-size: 0.9rem; margin: 0;">Innovate 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-award"></i></div>
+                            <div class="flip-card-back">
+                                <h3>Top 10%</h3>
+                                <p style="color: #eee; font-size: 0.9rem; margin: 0;">Batch of 2028</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><i class="bi bi-patch-check"></i></div>
+                            <div class="flip-card-back">
+                                <h3>Code Contributor</h3>
+                                <p style="color: #eee; font-size: 0.9rem; margin: 0;">Open Source Project</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
     </main>
     
     <footer id="contact" class="main-footer hidden-fade">
@@ -171,6 +333,11 @@
                     <i class="bi bi-telephone-fill"></i>
                 </a>
             </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="anar291" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+            </div>
+
             <p class="footer-credit">© 2025 Arnab Pandey. All rights reserved.</p>
         </div>
     </footer>
