@@ -1,7 +1,7 @@
 /* --- 1. Root Variables and Base Styles --- */
 
 :root {
-  /* This is where we define our colors. 
+  /* This is where we define our colors.  
      The JS will just toggle a class on the <body> 
      which will swap these variable values. */
   
@@ -157,8 +157,6 @@ section {
   color: var(--primary-color);
 }
 
-/* --- New styles for the mobile menu --- */
-/* This was added in the previous step */
 .mobile-menu-toggle {
   display: none; /* Hidden by default on desktop */
   background: none;
@@ -217,30 +215,14 @@ section {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
-}
-
-.skill-item {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
-  font-weight: 600;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-.skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px var(--shadow-color);
 }
 
 /* --- 5. Projects Section --- */
 
 .projects-grid {
   display: grid;
-  /* This CSS Grid magic makes it responsive */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
@@ -252,47 +234,64 @@ section {
   box-shadow: 0 4px 12px var(--shadow-color);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Ensures border-radius crops children */
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--shadow-color);
+  overflow: hidden;
+  
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
 }
 
-/* We separate the content from the card itself for better padding */
 .project-card h3 {
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: 0;
 }
 .project-card p {
-  padding: 0 1.5rem;
-  flex-grow: 1; /* This makes all cards the same height */
+  padding: 0;
+  flex-grow: 1; /* Pushes content to bottom */
 }
 
 .project-skills {
-  padding: 1rem 1.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.project-skills span {
-  background-color: var(--primary-color);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
+  gap: 0.75rem; /* Added a bit more gap */
+  margin-bottom: 1.5rem; /* Add spacing */
+  /* ▼▼▼ ADDED ▼▼▼ */
+  align-items: center; 
 }
 
+/* ▼▼▼ REPLACED .project-skills span WITH THIS ▼▼▼ */
+.project-skills i {
+  font-size: 2rem; /* Make the logos a good size */
+  color: var(--text-color); /* Makes them respect light/dark mode */
+  opacity: 0.8; /* A little softer so they don't scream */
+  transition: opacity 0.3s ease;
+}
+
+.project-skills i:hover {
+  opacity: 1; /* Full color on hover */
+}
+
+
 .project-links {
-  border-top: 1px solid var(--border-color);
-  padding: 1rem 1.5rem;
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  padding: 1rem;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1.5rem;
 }
-.project-link {
+
+.project-links .project-link {
+  color: #fff;
   font-weight: 600;
+}
+.project-links .project-link:hover {
+  color: #eee; /* Faint hover effect */
+  text-decoration: underline;
+}
+
+.project-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -354,7 +353,6 @@ section {
 }
 
 /* --- 8. Responsive (Mobile) --- */
-/* This is the new block you provided */
 @media (max-width: 768px) {
   h2 {
     font-size: 2rem;
@@ -422,4 +420,153 @@ section {
   html {
     scroll-padding-top: 80px; 
   }
+
+  .project-card-flip {
+    /* Auto-height for projects on mobile is better */
+    height: auto;
+  }
+
+  /* We must disable the flip effect on mobile, it's bad UX */
+  /* It will just show the "back" of the card normally */
+  .project-card-flip:hover .flip-card-inner {
+    transform: none;
+  }
+  .project-card-flip .flip-card-front {
+    display: none; /* Hide the front face entirely on mobile */
+  }
+  .project-card-flip .flip-card-back {
+    position: relative; /* Make it a normal, static card */
+    transform: none;
+    text-align: left;
+  }
+  .project-card-flip {
+    height: auto; /* Let the content define the height */
+  }
+}
+
+
+/* --- 9. Flip Card (Skills, Achievements, Projects) --- */
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 140px; /* This is for Skills/Achievements */
+  perspective: 1000px;
+  border-radius: 8px; /* Match your old .skill-item radius */
+}
+
+/* This is the container for the project flip cards */
+.project-card-flip {
+  height: 320px; 
+  border-radius: 12px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* This is the flip action on hover */
+.flip-card:hover .flip-card-inner,
+.project-card-flip:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back common styles for SKILLS/ACHIEVEMENTS */
+.flip-card-front, 
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* For Safari */
+  backface-visibility: hidden;
+  
+  /* These styles match your old .skill-item */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  
+  /* Center the content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Front and Back common styles for PROJECTS */
+.project-card-flip .flip-card-front,
+.project-card-flip .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+/* Front-specific styles (SKILLS/ACHIEVEMENTS) */
+.flip-card-front {
+  color: var(--primary-color);
+  font-size: 3.5rem; /* Big icon */
+}
+
+/* Back-specific styles (SKILLS/ACHIEVEMENTS) */
+.flip-card-back {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff; /* White text on the primary-color background */
+  transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.flip-card-back p {
+  color: #eee;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* STYLES FOR PROJECT CARD FRONT */
+.project-front-face {
+  /* Copy styles from .flip-card-front */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px; /* Project card radius */
+  box-shadow: 0 4px 10px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  
+  /* Override icon styles */
+  color: var(--text-color);
+  font-size: 1.5rem; /* Normal H3 size */
+}
+
+.project-front-face h3 {
+  color: var(--text-color);
+}
+
+/* Back-specific styles (PROJECTS) */
+.project-card-flip .flip-card-back {
+  transform: rotateY(180deg);
+  /* We apply .project-card to the back face, so it gets all those styles */
+  /* We must override text-align from .flip-card-inner */
+  text-align: left;
 }
